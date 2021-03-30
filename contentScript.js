@@ -419,6 +419,7 @@ window.onload = function() {
     gainNode2.gain.value=0.8;
 
     chrome.storage.local.get(["vol"],(items)=>{
+      console.log(items)
       items["vol"]=items["vol"]|800;
       const volumebar=document.querySelector("#play-controller > div > div > div.vc-pctrl-buttons-bar");
       const volumeinput=document.createElement("input");
@@ -426,7 +427,7 @@ window.onload = function() {
       volumeinput.setAttribute("min", "0");
       volumeinput.setAttribute("max", "1000");
       volumeinput.setAttribute("step", "1");
-      volumeinput.setAttribute("value", (items.vol*1000).toString());
+      volumeinput.setAttribute("value", (items.vol).toString());
       gainNode2.gain.value=items.vol/1000;
       volumeinput.addEventListener("input",function(ev){
         gainNode2.gain.value=this.value/1000;
