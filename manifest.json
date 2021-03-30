@@ -1,0 +1,21 @@
+{
+    "name": "SSU Lecture Volume Sanitizer",
+    "version": "1.0",
+    "manifest_version": 2,
+    "background": {
+      "persistent": false,
+      "scripts": [ "worker_proxy.js" ]
+    },
+    "content_scripts": [
+      {
+        "matches": ["http://commons.ssu.ac.kr/em/*"],
+        "js": ["patch-worker.js","contentScript.js"],
+        "all_frames":true
+      }
+    ],
+    "permissions": ["*://*.ssu.ac.kr/*","storage"],
+    "web_accessible_resources": [
+      "needles-worker.js",
+      "needles.js"
+    ]
+  }
